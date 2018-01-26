@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib  uri="http://displaytag.sf.net" prefix="display" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,97 +18,48 @@
         <li>员工管理</li>
     </ul>
 </div>
+<script type="text/javascript">
+		function query(condition){
+			$("#keyword").attr("name",condition.value);
+		}
+</script>
+
 <div class="row alert alert-info"  style="margin:0px; padding:3px;" >
-<form class="form-horizontal">
+<form  action="${pageContext.request.contextPath}/system/stffinfo/list.action" method="post" class="form-horizontal">
 	<div class="col-sm-1" >条件:</div>
     <div class="col-sm-3">
-    	<select class="form-control  input-sm">
-        	<option>姓名</option>
-            <option>性别</option>
+    	<select class="form-control  input-sm" onchange="query(this)" name="condition">
+        	<option value="">请选择</option>
+        	<option value="staffId">编号</option>
+            <option value="staffName">姓名</option>
+            <option value="staffMobilePhone">移动电话</option>
         </select>
     </div>
     <div class="col-sm-3">
-    	<input type="text"  class="form-control input-sm"/>
+    	<input type="text"  id="keyword"  class="form-control input-sm"/>
     </div>
-    <input type="button"   class="btn btn-danger"   value="查询"/>
-    <input type="button"   class="btn btn-success"   value="添加" onClick="javascript:window.location='staffinfo_add.html'"/>
-    </form>
+    <input type="submit"   class="btn btn-danger"   value="查询"/>
+    <input type="button"   class="btn btn-success"   value="添加" onClick="javascript:window.location='${pageContext.request.contextPath}/view/system/staffinfo/staffinfo_add.jsp'"/>
+ </form>
 </div>
-<div class="row" style="padding:15px; padding-top:0px; ">
+<div class="row" style="padding:15px; padding-top:0px; " align="right">
 	<table class="table  table-condensed table-striped">
-    	<tr>
-        	<th>员工编号</th>
-            <th>员工姓名</th>
-            <th>员工性别</th>
-            <th>员工年龄</th>
-            <th>电话号码</th>
-            <th>QQ</th>
-            <th>入职时间</th>
-             <th>操作</th>
-        </tr>
-        <tr>
-        	<td><a href="staffinfo_show.html">1001</a></td>
-            <td>张三</td>
-            <td>男</td>
-            <td>18</td>
-            <td>989899999</td>
-            <td>123456</td>
-            <td>2014-10-27</td>
-            <td>
-            	<a  href="staffinfo_update.html">修改</a>
-                <a  href="修改">删除</a>
-            </td>
-        </tr>        <tr>
-        	<td>1001</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>18</td>
-            <td>989899999</td>
-            <td>123456</td>
-            <td>2014-10-27</td>
-            <td>
-            	<a  href="staffinfo_update.html">修改</a>
-                <a  href="修改">删除</a>
-            </td>
-        </tr>        <tr>
-        	<td>1001</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>18</td>
-            <td>989899999</td>
-            <td>123456</td>
-            <td>2014-10-27</td>
-            <td>
-            	<a  href="staffinfo_update.html">修改</a>
-                <a  href="修改">删除</a>
-            </td>
-        </tr>    <tr>
-        	<td>1001</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>18</td>
-            <td>989899999</td>
-            <td>123456</td>
-            <td>2014-10-27</td>
-            <td>
-            	<a  href="修改">修改</a>
-                <a  href="修改">删除</a>
-            </td>
-        </tr>    <tr>
-        	<td>1001</td>
-            <td>张三</td>
-            <td>男</td>
-            <td>18</td>
-            <td>989899999</td>
-            <td>123456</td>
-            <td>2014-10-27</td>
-            <td>
-            	<a  href="修改">修改</a>
-                <a  href="修改">删除</a>
-            </td>
-        </tr>
-          
     </table>
+    <display:table class="table table-condensed table-striped" name="list" pagesize="10" requestURI="${pageContext.request.contextPath }/system/stffinfo/list.action">
+    	<display:column property="staffId" title="编号"></display:column>
+    	<display:column property="staffName" title="姓名" href="${pageContext.request.contextPath }/system/stffinfo/show.action"></display:column>
+    	<display:column property="staffAge" title="年龄"></display:column>
+    	<display:column property="staffId" title="编号"></display:column>
+    	<display:column property="staffMobilePhone" title="移动电话"></display:column>
+    	<display:column property="staffEmail" title="邮箱"></display:column>
+    	<display:column property="staffEntryTime" title="入职时间" format="{0,date,yyyy年MM月dd日}"></display:column>
+    	<display:column property="staffEducationLevel" title="教育水平"></display:column>
+    	<display:column href="${pageContext.request.contextPath }/system/stffinfo/load.action" paramId="staffId" paramProperty="staffId" value="修改" title="修改"></display:column>
+    	<display:column href="${pageContext.request.contextPath }/system/stffinfo/delete.action" paramId="staffId" paramProperty="staffId" value="删除" title="删除"></display:column>
+    	
+    </display:table>
+    
+    
 </div>
 
 </body>

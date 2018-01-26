@@ -25,3 +25,5 @@
 <script src="${pageContext.request.contextPath}/resource/assets/js/ace.min.js"></script>
 
 
+<script src="${pageContext.request.contextPath}/resource/My97DatePicker/WdatePicker.js"></script>
+

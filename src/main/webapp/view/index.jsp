@@ -123,7 +123,7 @@
 
 						<ul class="submenu">
 							
-                            <li><a href="${pageContext.request.contextPath}/view/system/staffinfo/staffinfo_list.jsp" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath}/system/stffinfo/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 员工管理
 							</a></li>
                             <li><a href="view/system/roleinfo/roleinfo_list.html" target="mainframe"> <i
