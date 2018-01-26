@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.guigu.instructional.po.RoleInfo;
+import com.guigu.instructional.po.StaffInfo;
 import com.guigu.instructional.system.service.RoleInfoService;
 import com.guigu.instructional.system.service.StaffInfoService;
 
@@ -83,6 +84,34 @@ public class RoleInfoController {
             model.addAttribute("info", "修改失败");
         }
         return this.list(null, model);
+    }
+    
+    @RequestMapping("staffinforolelist.action")
+    public String staffInfoRoleList(StaffInfo staffInfo,Model model) {
+        List<StaffInfo> list =staffInfoService.getStaffInfoList(staffInfo);
+        model.addAttribute("list",list);
+        return "system/roleinfo/staffinfo_role_list";
+    }
+    
+    @RequestMapping("loadchange.action")
+    public String loadStaffInfo(Integer staffId,Model model) {
+        StaffInfo staffInfo =staffInfoService.getStaffInfo(staffId);
+        model.addAttribute("staffInfo", staffInfo);
+        //查询所有的角色
+        List<RoleInfo> list =roleInfoService.getRoleInfoList(null);
+        model.addAttribute("rolelist", list);
+        return "system/roleinfo/role_change";
+    }
+    
+    @RequestMapping("changerole.action")
+    public String updateStaffInfoRole(StaffInfo staffInfo,Model model) {
+        boolean result =staffInfoService.updateStaff(staffInfo);
+        if(result) {
+            model.addAttribute("info", "变更成功");
+        }else {
+            model.addAttribute("info", "变更失败");
+        }
+        return this.staffInfoRoleList(null, model);
     }
     
     
