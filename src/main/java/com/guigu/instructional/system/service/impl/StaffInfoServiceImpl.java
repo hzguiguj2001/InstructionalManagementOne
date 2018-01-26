@@ -64,11 +64,11 @@ public class StaffInfoServiceImpl implements StaffInfoService {
     public List<StaffInfo> getStaffInfoList(StaffInfo staffInfo) {
         StaffInfoExample staffInfoExample =new StaffInfoExample();
         
+        Criteria criteria =staffInfoExample.createCriteria();
         if(staffInfo!=null) {
-            Criteria criteria =staffInfoExample.createCriteria();
             //根据id查询
             if(staffInfo.getStaffId()!=null) {
-                criteria.andRoleIdEqualTo(staffInfo.getStaffId());
+                criteria.andStaffIdEqualTo(staffInfo.getStaffId());
             }
             //根据name查询
             if(staffInfo.getStaffName()!=null) {
@@ -81,9 +81,10 @@ public class StaffInfoServiceImpl implements StaffInfoService {
             }
             //1代表正常  0代表删除
             //查询所有正常的员工的数据
-            staffInfo.setStaffState("1");
+//            staffInfo.setStaffState("1");
             
         }
+        criteria.andStaffStateEqualTo("1");
        
         
         return staffInfoMapper.selectByExample(staffInfoExample);

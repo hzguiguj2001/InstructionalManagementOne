@@ -1,15 +1,15 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib  uri="http://displaytag.sf.net" prefix="display" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>首页</title>
-<!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="../../../css/bootstrap.min.css">
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="../../../js/jquery.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="../../../js/bootstrap.min.js"></script>
+
+<%@ include file="/view/public/common.jspf" %>
+
 </head>
 
 <body>
@@ -24,9 +24,9 @@
 <form action="" class="form-horizontal">
    	<div class="row">
     	<div class="col-sm-5 col-sm-offset-4">
-        	<a href="staffinfo_update.html" class="btn btn-success" >修改</a>
-            <input  type="reset" class="btn  btn-danger" value="删除"/>
-            <input  type="reset" class="btn btn-warning" value="返回上一级"/>
+        	<a href="${pageContext.request.contextPath }/system/staffinfo/load.action?staffId=${staffInfo.staffId}" class="btn btn-success" >修改</a>
+        	<a href="${pageContext.request.contextPath }/system/staffinfo/delete.action?staffId=${staffInfo.staffId}" class="btn btn-success" >删除</a>
+        	<a href="${pageContext.request.contextPath }/system/staffinfo/list.action" class="btn btn-waring" >返回上一级</a>
         </div>
     </div>
     <h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">基本信息</h5>
@@ -35,7 +35,7 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">编号</label>
                 <div class="col-sm-9">
-                	<p class="form-control-static">10001</p>
+                	<p class="form-control-static">${staffInfo.staffId}</p>
                 </div>
             </div>
         
@@ -44,7 +44,7 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">姓名</label>
                 <div class="col-sm-9">
-                	<p class="form-control-static">张三</p>
+                	<p class="form-control-static">${staffInfo.staffName}</p>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">年龄</label>
                 <div class="col-sm-5">
-                	<p class="form-control-static">18</p>
+                	<p class="form-control-static">${staffInfo.staffAge}</p>
                 </div>
             </div>
         
@@ -65,7 +65,7 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">性别</label>
                 <div class="col-sm-4">
-                	<p class="form-control-static">男</p>
+                	<p class="form-control-static">${staffInfo.staffSex}</p>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">籍贯</label>
                 <div class="col-sm-6">
-                	<p class="form-control-static">上海</p>
+                	<p class="form-control-static">${staffInfo.staffNativePlace}</p>
                 </div>
             </div>
         
@@ -86,7 +86,7 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">身份证</label>
                 <div class="col-sm-9">
-               <p class="form-control-static">5001231010xxxxxxxxx</p>
+               <p class="form-control-static">${staffInfo.staffIdcard}</p>
                 </div>
             </div>
         </div>
@@ -98,7 +98,9 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">出生日期</label>
                 <div class="col-sm-9">
-                	 <p class="form-control-static">2001-01-01</p>
+                	 <p class="form-control-static">
+                	 	<fmt:formatDate value="${staffInfo.staffBirthday}" pattern="yyyy年MM月dd日" type="both"/>
+                	 </p>
                 </div>
             </div>
         
@@ -107,7 +109,7 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">办公电话</label>
                 <div class="col-sm-9">
-                 <p class="form-control-static">0123-123131231-11</p>
+                 <p class="form-control-static">${staffInfo.staffOfficePhone}</p>
                 </div>
             </div>
         </div>
@@ -119,7 +121,7 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">电子邮件</label>
                 <div class="col-sm-9">
-                	  <p class="form-control-static">0xxxxxxx@qq.com</p>
+                	  <p class="form-control-static">${staffInfo.staffEmail}</p>
                 </div>
             </div>
         
@@ -128,7 +130,7 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">移动电话</label>
                 <div class="col-sm-9">
-               	 <p class="form-control-static">14233993345</p>
+               	 <p class="form-control-static">${staffInfo.staffOfficePhone}</p>
                 </div>
             </div>
         </div>
@@ -140,7 +142,7 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">家庭住址</label>
                 <div class="col-sm-9">
-                	<p class="form-control-static">上海浦东新区xxx街xxx号</p>
+                	<p class="form-control-static">${staffInfo.staffAddr}</p>
                 </div>
             </div>
         
@@ -149,7 +151,7 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">QQ</label>
                 <div class="col-sm-9">
-              		 <p class="form-control-static">xxxxxxx</p>
+              		 <p class="form-control-static">${staffInfo.staffQq}</p>
                 </div>
             </div>
         </div>
@@ -161,7 +163,9 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">入职时间</label>
                 <div class="col-sm-9">
-                	 <p class="form-control-static">2014-10-29 24:41:12</p>
+                	 <p class="form-control-static">
+                	 		<fmt:formatDate value="${staffInfo.staffEntryTime}" pattern="yyyy年MM月dd日" type="both"/>
+                	 </p>
                 </div>
             </div>
         
@@ -170,7 +174,7 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">教育水平</label>
                 <div class="col-sm-6">
-                		<p class="form-control-static">博士</p>
+                		<p class="form-control-static">${staffInfo.staffEducationLevel}</p>
                 </div>
             </div>
         </div>
@@ -182,7 +186,9 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">备注</label>
                 <div class="col-sm-9">
-                		<p class="form-control-static">今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面今天晚上吃泡面</p>
+                		<p class="form-control-static">
+                			${staffInfo.staffRemark}
+                		</p>
                 </div>
             </div>
         
@@ -195,7 +201,9 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">账号</label>
                 <div class="col-sm-9">
-                	<p class="form-control-static">admin</p>
+                	<p class="form-control-static">
+                		${staffInfo.staffNumber}
+                	</p>
                 </div>
             </div>
         
@@ -204,16 +212,18 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">密码</label>
                 <div class="col-sm-9">
-                	<p class="form-control-static">admin123456</p>
+                	<p class="form-control-static">
+                		${staffInfo.staffPassword}
+                	</p>
                 </div>
             </div>
         </div>
     </div>
    	<div class="row">
     	<div class="col-sm-5 col-sm-offset-4">
-          	<a href="staffinfo_update.html" class="btn btn-success" >修改</a>
-            <input  type="reset" class="btn  btn-danger" value="删除"/>
-            <input  type="reset" class="btn btn-warning" value="返回上一级"/>
+          <a href="${pageContext.request.contextPath }/system/staffinfo/load.action?staffId=${staffInfo.staffId}" class="btn btn-success" >修改</a>
+        	<a href="${pageContext.request.contextPath }/system/staffinfo/delete.action?staffId=${staffInfo.staffId}" class="btn btn-success" >删除</a>
+        	<a href="${pageContext.request.contextPath }/system/staffinfo/list.action" class="btn btn-waring" >返回上一级</a>
         </div>
     </div>
 </form>

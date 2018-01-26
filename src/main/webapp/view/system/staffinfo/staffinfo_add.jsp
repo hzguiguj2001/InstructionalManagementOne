@@ -18,7 +18,7 @@
     </ul>
 </div>
 
-<form action="${pageContext.request.contextPath}/system/stffinfo/add.action" class="form-horizontal">
+<form action="${pageContext.request.contextPath}/system/staffinfo/add.action" class="form-horizontal">
    	<div class="row">
     	<div class="col-sm-3 col-sm-offset-4">
         	<input  type="submit" class="btn btn-success" value="保存"/>
