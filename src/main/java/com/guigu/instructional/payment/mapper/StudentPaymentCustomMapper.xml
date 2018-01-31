@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.guigu.instructional.payment.mapper.StudentPaymentCustomMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.guigu.instructional.po.StudentPaymentCustom">
+		<id column="payment_id" property="paymentId" jdbcType="INTEGER" />
+		<result column="student_id" property="studentId" jdbcType="INTEGER" />
+		<result column="staff_id" property="staffId" jdbcType="INTEGER" />
+		<result column="payment_situtation" property="paymentSitutation"
+			jdbcType="VARCHAR" />
+		<result column="payment_menthod" property="paymentMenthod"
+			jdbcType="INTEGER" />
+		<result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP" />
+		<result column="payment_discount_amount" property="paymentDiscountAmount"
+			jdbcType="DOUBLE" />
+		<result column="payment_should_amount" property="paymentShouldAmount"
+			jdbcType="DOUBLE" />
+		<result column="payment_real_amount" property="paymentRealAmount"
+			jdbcType="DOUBLE" />
+		<result column="payment_debt_amount" property="paymentDebtAmount"
+			jdbcType="DOUBLE" />
+		<result column="payment_remark" property="paymentRemark"
+			jdbcType="VARCHAR" />
+		<result column="student_name" property="studentName" jdbcType="VARCHAR" />
+		<result column="staff_name" property="staffName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="query_where">
+
+		payment.student_id=student.student_id and
+		payment.staff_id=staff.staff_id
+		<if test="paymentId!=null and paymentId!=''">
+			and payment.payment_id like '%${paymentId}%'
+		</if>
+		<if test="studentId!=null and studentId!=''">
+			and payment.student_id like '%${studentId}%'
+		</if>
+		<if test="staffId!=null and staffId!=''">
+			and payment.staff_id like '%${staffId}%'
+		</if>
+		<if test="staffName!=null and staffName!=''">
+			and staff.staff_name like '%${staffName}%'
+		</if>
+		<if test="studentName!=null and studentName!=''">
+			and student.student_name like '%${studentName}%'
+		</if>
+		
+		
+
+	</sql>
+
+	<select id="findStudentPaymentList" parameterType="com.guigu.instructional.po.StudentPaymentCustom"
+		resultMap="BaseResultMap">
+		select payment.*,staff.staff_name,student.student_name 
+		from
+		student_payment payment,staff_info staff,student_info student
+		<where>
+			<include refid="query_where"></include>
+		</where>
+	</select>
+
+
+</mapper>

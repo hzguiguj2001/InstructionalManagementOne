@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.instructional.payment.mapper.StaffSalaryCustomMapper">
+
+	<resultMap id="BaseResultMap" type="com.guigu.instructional.po.StaffSalaryCustom">
+		<id column="staff_salary_id" property="staffSalaryId" jdbcType="INTEGER" />
+		<result column="staff_id" property="staffId" jdbcType="INTEGER" />
+		<result column="sta_staff_id" property="staStaffId" jdbcType="INTEGER" />
+		<result column="staff_salary_total" property="staffSalaryTotal"
+			jdbcType="DOUBLE" />
+		<result column="staff_salary_deduct" property="staffSalaryDeduct"
+			jdbcType="DOUBLE" />
+		<result column="staff_salary_real" property="staffSalaryReal"
+			jdbcType="DOUBLE" />
+		<result column="staff_salary_isused" property="staffSalaryIsused"
+			jdbcType="VARCHAR" />
+		<result column="staff_salary_time" property="staffSalaryTime"
+			jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+
+		<result column="staff_name" property="staffName" jdbcType="VARCHAR" />
+		<result column="stastaff_name" property="staStaffName" jdbcType="VARCHAR" />
+	</resultMap>
+
+<sql id="query_where">
+
+		staff.staff_id=salary.staff_id and stastaff.staff_id=salary.sta_staff_id
+		
+
+		 	<if test="staffSalaryId!=null and staffSalaryId!=''">
+		 		and salary.staff_salary_id like '%${staffSalaryId}%'
+		 	</if>
+		 	<if test="staffId!=null and staffId!=''">
+		 		and salary.staff_id like '%${staffId}%'
+		 	</if>
+		 	<if test="staStaffId!=null and staStaffId!=''">
+		 		and salary.sta_staff_id like '%${staStaffId}%'
+		 	</if>
+		 	<if test="staStaffName!=null and staStaffName!=''">
+		 		and stastaff.staff_name like '%${staStaffName}%'
+		 	</if>
+		 	<if test="staffName!=null and staffName!=''">
+		 		and staff.staff_name like '%${staffName}%'
+		 	</if>
+
+	</sql>
+
+	<select id="findStaffSalaryList" parameterType="com.guigu.instructional.po.StaffSalaryCustom"
+		resultMap="BaseResultMap">
+		select
+		salary.*,staff.staff_name,stastaff.staff_name stastaff_name
+		from
+		staff_info staff,staff_salary salary,staff_info stastaff
+		
+		<where>
+			<include refid="query_where"></include>
+		</where>
+	</select>
+	
+
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.instructional.market.mapper.EmailInfoStaffMapper">
+<resultMap id="BaseResultMap" type="com.guigu.instructional.po.EmailInfoStaff" >
+    <id column="email_id" property="emailId" jdbcType="INTEGER" />
+    <result column="staff_id" property="staffId" jdbcType="INTEGER" />
+    <result column="email_title" property="emailTitle" jdbcType="VARCHAR" />
+    <result column="email_content" property="emailContent" jdbcType="VARCHAR" />
+    <result column="email_time" property="emailTime" jdbcType="TIMESTAMP" />
+    <result column="email_man" property="emailMan" jdbcType="VARCHAR" />
+    <result column="email_addr" property="emailAddr" jdbcType="VARCHAR" />
+    <result column="email_state" property="emailState" jdbcType="VARCHAR" />
+    <result column="staff_name" property="staffName" jdbcType="VARCHAR" />
+  </resultMap>
+
+<select id="findEmailInfoStaffList" parameterType="com.guigu.instructional.po.MessageInfoStaffVO" resultMap="BaseResultMap">
+		select emailInfo.*,staffInfo.staff_name from email_info emailInfo, staff_info staffInfo where emailInfo.staff_id = staffInfo.staff_id
+		and emailInfo.email_state='1'
+		<!-- <where>
+			 <include refid="query_MessageInfoStaff_where"></include> 
+		</where> -->
+</select>
+
+	<sql id="query_EmailInfoStaff_where">
+		emailInfo.staff_id = staffInfo.staff_id and emailInfo.email_state='1'
+		<if test="emailTitle!=null and emailTitle!=''">
+			and emailInfo.email_title like '%${emailTitle}%'
+		</if>
+
+	</sql>
+
+<select id="queryEmailInfoStaff" parameterType="com.guigu.instructional.po.MessageInfoStaffVO" resultMap="BaseResultMap">
+		select emailInfo.*,staffInfo.staff_name from email_info emailInfo, staff_info staffInfo 
+		<where>
+			 <include refid="query_EmailInfoStaff_where"></include> 
+		</where>
+</select>
+
+</mapper>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.instructional.student.mapper.StudentWriteGradeMapper" >
+  <resultMap id="BaseResultMap" type="com.guigu.instructional.po.StudentWriteGrade" >
+    <id column="write_grade_id" property="writeGradeId" jdbcType="INTEGER" />
+    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="staff_id" property="staffId" jdbcType="INTEGER" />
+    <result column="discipline_id" property="disciplineId" jdbcType="INTEGER" />
+    <result column="write_grade" property="writeGrade" jdbcType="VARCHAR" />
+    <result column="write_grade_time" property="writeGradeTime" jdbcType="TIMESTAMP" />
+    <result column="write_grade_note" property="writeGradeNote" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    write_grade_id, student_id, staff_id, discipline_id, write_grade, write_grade_time, 
+    write_grade_note
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guigu.instructional.po.StudentWriteGradeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from student_write_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from student_write_grade
+    where write_grade_id = #{writeGradeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student_write_grade
+    where write_grade_id = #{writeGradeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guigu.instructional.po.StudentWriteGradeExample" >
+    delete from student_write_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guigu.instructional.po.StudentWriteGrade" >
+    insert into student_write_grade (write_grade_id, student_id, staff_id, 
+      discipline_id, write_grade, write_grade_time, 
+      write_grade_note)
+    values (#{writeGradeId,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{staffId,jdbcType=INTEGER}, 
+      #{disciplineId,jdbcType=INTEGER}, #{writeGrade,jdbcType=VARCHAR}, #{writeGradeTime,jdbcType=TIMESTAMP}, 
+      #{writeGradeNote,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guigu.instructional.po.StudentWriteGrade" >
+    insert into student_write_grade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="writeGradeId != null" >
+        write_grade_id,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="disciplineId != null" >
+        discipline_id,
+      </if>
+      <if test="writeGrade != null" >
+        write_grade,
+      </if>
+      <if test="writeGradeTime != null" >
+        write_grade_time,
+      </if>
+      <if test="writeGradeNote != null" >
+        write_grade_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="writeGradeId != null" >
+        #{writeGradeId,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="disciplineId != null" >
+        #{disciplineId,jdbcType=INTEGER},
+      </if>
+      <if test="writeGrade != null" >
+        #{writeGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="writeGradeTime != null" >
+        #{writeGradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writeGradeNote != null" >
+        #{writeGradeNote,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guigu.instructional.po.StudentWriteGradeExample" resultType="java.lang.Integer" >
+    select count(*) from student_write_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update student_write_grade
+    <set >
+      <if test="record.writeGradeId != null" >
+        write_grade_id = #{record.writeGradeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentId != null" >
+        student_id = #{record.studentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffId != null" >
+        staff_id = #{record.staffId,jdbcType=INTEGER},
+      </if>
+      <if test="record.disciplineId != null" >
+        discipline_id = #{record.disciplineId,jdbcType=INTEGER},
+      </if>
+      <if test="record.writeGrade != null" >
+        write_grade = #{record.writeGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.writeGradeTime != null" >
+        write_grade_time = #{record.writeGradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.writeGradeNote != null" >
+        write_grade_note = #{record.writeGradeNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update student_write_grade
+    set write_grade_id = #{record.writeGradeId,jdbcType=INTEGER},
+      student_id = #{record.studentId,jdbcType=INTEGER},
+      staff_id = #{record.staffId,jdbcType=INTEGER},
+      discipline_id = #{record.disciplineId,jdbcType=INTEGER},
+      write_grade = #{record.writeGrade,jdbcType=VARCHAR},
+      write_grade_time = #{record.writeGradeTime,jdbcType=TIMESTAMP},
+      write_grade_note = #{record.writeGradeNote,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guigu.instructional.po.StudentWriteGrade" >
+    update student_write_grade
+    <set >
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="disciplineId != null" >
+        discipline_id = #{disciplineId,jdbcType=INTEGER},
+      </if>
+      <if test="writeGrade != null" >
+        write_grade = #{writeGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="writeGradeTime != null" >
+        write_grade_time = #{writeGradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="writeGradeNote != null" >
+        write_grade_note = #{writeGradeNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where write_grade_id = #{writeGradeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guigu.instructional.po.StudentWriteGrade" >
+    update student_write_grade
+    set student_id = #{studentId,jdbcType=INTEGER},
+      staff_id = #{staffId,jdbcType=INTEGER},
+      discipline_id = #{disciplineId,jdbcType=INTEGER},
+      write_grade = #{writeGrade,jdbcType=VARCHAR},
+      write_grade_time = #{writeGradeTime,jdbcType=TIMESTAMP},
+      write_grade_note = #{writeGradeNote,jdbcType=VARCHAR}
+    where write_grade_id = #{writeGradeId,jdbcType=INTEGER}
+  </update>
+</mapper>

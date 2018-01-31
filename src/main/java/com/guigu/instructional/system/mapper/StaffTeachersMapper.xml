@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.instructional.system.mapper.StaffTeachersMapper" >
+  <resultMap id="BaseResultMap" type="com.guigu.instructional.po.StaffInfo" >
+    <id column="staff_id" property="staffId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="staff_name" property="staffName" jdbcType="VARCHAR" />
+    <result column="staff_sex" property="staffSex" jdbcType="VARCHAR" />
+    <result column="staff_age" property="staffAge" jdbcType="INTEGER" />
+    <result column="staff_native_place" property="staffNativePlace" jdbcType="VARCHAR" />
+    <result column="staff_idcard" property="staffIdcard" jdbcType="VARCHAR" />
+    <result column="staff_birthday" property="staffBirthday" jdbcType="TIMESTAMP" />
+    <result column="staff_office_phone" property="staffOfficePhone" jdbcType="VARCHAR" />
+    <result column="staff_mobile_phone" property="staffMobilePhone" jdbcType="VARCHAR" />
+    <result column="staff_email" property="staffEmail" jdbcType="VARCHAR" />
+    <result column="staff_addr" property="staffAddr" jdbcType="VARCHAR" />
+    <result column="staff_qq" property="staffQq" jdbcType="VARCHAR" />
+    <result column="staff_entry_time" property="staffEntryTime" jdbcType="TIMESTAMP" />
+    <result column="staff_education_level" property="staffEducationLevel" jdbcType="VARCHAR" />
+    <result column="staff_remark" property="staffRemark" jdbcType="VARCHAR" />
+    <result column="staff_state" property="staffState" jdbcType="VARCHAR" />
+    <result column="staff_number" property="staffNumber" jdbcType="VARCHAR" />
+    <result column="staff_password" property="staffPassword" jdbcType="VARCHAR" />
+  </resultMap>
+
+	<select id="findStaffTeachers" parameterType="com.guigu.instructional.po.StaffSalary"
+		resultMap="BaseResultMap">
+		select *
+		from
+		staff_info 
+		where role_id=3 and staff_state=1
+	</select>
+	
+</mapper>
+ 

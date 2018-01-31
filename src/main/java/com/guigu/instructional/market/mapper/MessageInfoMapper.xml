@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.instructional.market.mapper.MessageInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.guigu.instructional.po.MessageInfo" >
+    <id column="message_id1" property="messageId1" jdbcType="INTEGER" />
+    <result column="staff_id" property="staffId" jdbcType="INTEGER" />
+    <result column="message_content" property="messageContent" jdbcType="VARCHAR" />
+    <result column="message_man" property="messageMan" jdbcType="VARCHAR" />
+    <result column="message_phone" property="messagePhone" jdbcType="VARCHAR" />
+    <result column="message_time" property="messageTime" jdbcType="TIMESTAMP" />
+    <result column="message_state" property="messageState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    message_id1, staff_id, message_content, message_man, message_phone, message_time, 
+    message_state
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guigu.instructional.po.MessageInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from message_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from message_info
+    where message_id1 = #{messageId1,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from message_info
+    where message_id1 = #{messageId1,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guigu.instructional.po.MessageInfoExample" >
+    delete from message_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guigu.instructional.po.MessageInfo" >
+    insert into message_info (message_id1, staff_id, message_content, 
+      message_man, message_phone, message_time, 
+      message_state)
+    values (#{messageId1,jdbcType=INTEGER}, #{staffId,jdbcType=INTEGER}, #{messageContent,jdbcType=VARCHAR}, 
+      #{messageMan,jdbcType=VARCHAR}, #{messagePhone,jdbcType=VARCHAR}, #{messageTime,jdbcType=TIMESTAMP}, 
+      #{messageState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guigu.instructional.po.MessageInfo" >
+    insert into message_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageId1 != null" >
+        message_id1,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="messageContent != null" >
+        message_content,
+      </if>
+      <if test="messageMan != null" >
+        message_man,
+      </if>
+      <if test="messagePhone != null" >
+        message_phone,
+      </if>
+      <if test="messageTime != null" >
+        message_time,
+      </if>
+      <if test="messageState != null" >
+        message_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageId1 != null" >
+        #{messageId1,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="messageContent != null" >
+        #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="messageMan != null" >
+        #{messageMan,jdbcType=VARCHAR},
+      </if>
+      <if test="messagePhone != null" >
+        #{messagePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTime != null" >
+        #{messageTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="messageState != null" >
+        #{messageState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guigu.instructional.po.MessageInfoExample" resultType="java.lang.Integer" >
+    select count(*) from message_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update message_info
+    <set >
+      <if test="record.messageId1 != null" >
+        message_id1 = #{record.messageId1,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffId != null" >
+        staff_id = #{record.staffId,jdbcType=INTEGER},
+      </if>
+      <if test="record.messageContent != null" >
+        message_content = #{record.messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageMan != null" >
+        message_man = #{record.messageMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messagePhone != null" >
+        message_phone = #{record.messagePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.messageTime != null" >
+        message_time = #{record.messageTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.messageState != null" >
+        message_state = #{record.messageState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update message_info
+    set message_id1 = #{record.messageId1,jdbcType=INTEGER},
+      staff_id = #{record.staffId,jdbcType=INTEGER},
+      message_content = #{record.messageContent,jdbcType=VARCHAR},
+      message_man = #{record.messageMan,jdbcType=VARCHAR},
+      message_phone = #{record.messagePhone,jdbcType=VARCHAR},
+      message_time = #{record.messageTime,jdbcType=TIMESTAMP},
+      message_state = #{record.messageState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guigu.instructional.po.MessageInfo" >
+    update message_info
+    <set >
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="messageContent != null" >
+        message_content = #{messageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="messageMan != null" >
+        message_man = #{messageMan,jdbcType=VARCHAR},
+      </if>
+      <if test="messagePhone != null" >
+        message_phone = #{messagePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTime != null" >
+        message_time = #{messageTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="messageState != null" >
+        message_state = #{messageState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where message_id1 = #{messageId1,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guigu.instructional.po.MessageInfo" >
+    update message_info
+    set staff_id = #{staffId,jdbcType=INTEGER},
+      message_content = #{messageContent,jdbcType=VARCHAR},
+      message_man = #{messageMan,jdbcType=VARCHAR},
+      message_phone = #{messagePhone,jdbcType=VARCHAR},
+      message_time = #{messageTime,jdbcType=TIMESTAMP},
+      message_state = #{messageState,jdbcType=VARCHAR}
+    where message_id1 = #{messageId1,jdbcType=INTEGER}
+  </update>
+</mapper>

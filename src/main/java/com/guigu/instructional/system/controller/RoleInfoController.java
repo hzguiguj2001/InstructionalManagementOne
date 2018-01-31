@@ -95,11 +95,13 @@ public class RoleInfoController {
     
     @RequestMapping("loadchange.action")
     public String loadStaffInfo(Integer staffId,Model model) {
+    	
         StaffInfo staffInfo =staffInfoService.getStaffInfo(staffId);
         model.addAttribute("staffInfo", staffInfo);
         //查询所有的角色
         List<RoleInfo> list =roleInfoService.getRoleInfoList(null);
         model.addAttribute("rolelist", list);
+        
         return "system/roleinfo/role_change";
     }
     

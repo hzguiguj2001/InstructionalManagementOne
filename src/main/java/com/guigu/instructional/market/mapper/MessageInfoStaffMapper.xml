@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.instructional.market.mapper.MessageInfoStaffMapper" >
+  <resultMap id="BaseResultMap" type="com.guigu.instructional.po.MessageInfoStaff" >
+    <id column="message_id1" property="messageId1" jdbcType="INTEGER" />
+    <result column="staff_id" property="staffId" jdbcType="INTEGER" />
+    <result column="message_content" property="messageContent" jdbcType="VARCHAR" />
+    <result column="message_man" property="messageMan" jdbcType="VARCHAR" />
+    <result column="message_phone" property="messagePhone" jdbcType="VARCHAR" />
+    <result column="message_time" property="messageTime" jdbcType="TIMESTAMP" />
+    <result column="message_state" property="messageState" jdbcType="VARCHAR" />
+    <result column="staff_name" property="staffName" jdbcType="VARCHAR" />
+  </resultMap>
+
+<!--  	<sql id="query_MessageInfoStaff_where">
+		 		#{messageInfo.staffId} = #{staffInfo.staffId}
+	</sql>  -->
+	
+	<!--  <sql id="query_MessageInfoStaff_where">
+		 <if test="messageInfoStaff!=null">
+		 	<if test="messageInfoStaff.staffId!=null">
+		 		#{messageInfo.staffId} = #{staffInfo.staffId}
+		 	</if>
+		 
+		 </if>	
+	</sql>  -->
+	
+	<!-- 商品列表的查询 -->
+	<select id="findMessageInfoStaffList" parameterType="com.guigu.instructional.po.MessageInfoStaffVO" resultMap="BaseResultMap">
+		select messageInfo.*,staffInfo.staff_name from message_info messageInfo, staff_info staffInfo where messageInfo.staff_id = staffInfo.staff_id
+		and messageInfo.message_state='1'
+		<!-- <where>
+			 <include refid="query_MessageInfoStaff_where"></include> 
+		</where> -->
+	</select>
+	
+	<sql id="query_MessageInfoStaffList">
+		messageInfo.staff_id = staffInfo.staff_id and messageInfo.message_state='1'
+		<if test="messagePhone!=null and messagePhone!=''">
+			and messageInfo.message_phone like '%${messagePhone}%'
+		</if>
+
+	</sql>
+
+<select id="queryMessageInfoStaffList" parameterType="com.guigu.instructional.po.MessageInfoStaffVO" resultMap="BaseResultMap">
+		select messageInfo.*,staffInfo.staff_name from message_info messageInfo, staff_info staffInfo
+		<where>
+			 <include refid="query_MessageInfoStaffList"></include> 
+		</where>
+</select>
+	
+	
+
+</mapper>

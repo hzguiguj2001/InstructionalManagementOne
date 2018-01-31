@@ -135,8 +135,8 @@
 									class="icon-double-angle-right"></i> 权限管理	</a></li> 
                          <li><a href="view/system/anthotychange/anthorty_changelist.html" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 权限变更</a></li>  
-   						 <li><a href="view/system/datadictionary/datadictionary_list.html" target="mainframe"> <i
-									class="icon-double-angle-right"></i> 数据字典</a></li>                                                    
+   						 <li><a href="${pageContext.request.contextPath }/system/datadictionary/list.action" target="mainframe"> <i
+									class="icon-double-angle-right"></i> 数据字典</a></li>                                                      
 						</ul>
 				</li>
 			  <li><a href="javascript:void(0)" target="mainframe"
@@ -146,16 +146,16 @@
 
 						<ul class="submenu">
 							
-                            <li><a href="view/marketactive/template/template_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath }/marketactive/template/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 模板管理
 							</a></li>
-                             <li><a href="view/marketactive/messafeinfo/messafeinfo_list.html" target="mainframe"> <i
+                             <li><a href="${pageContext.request.contextPath }/marketactive/messafeinfo/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 短信管理
 							</a></li>       
-                            <li><a href="view/marketactive/emailinfo/emailinfo_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath }/marketactive/emailinfo/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 邮件管理
 							</a></li>   
-                            <li><a href="view/marketactive/marketactive/marketactive_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath }/marketactive/marketactive/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i>营销活动
 							</a></li>                                           
 						</ul>
@@ -182,49 +182,56 @@
 						</ul>
 				</li>
                 
-               <li><a href="javascript:void(0)" target="mainframe"
+				<li><a href="javascript:void(0)" target="mainframe"
 						class="dropdown-toggle"> <i class="icon-desktop"></i> <span
 							class="menu-text"> 班级管理 </span> <b class="arrow icon-angle-down"></b>
 					</a>
 
 						<ul class="submenu">
 							
-                            <li><a href="view/classinfo/disciplineinfo/disciplineinfo_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath}/classinfo/disciplineinfo/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 学科信息
 							</a></li>
-                            <li><a href="view/classinfo/classroominfo/classroominfo_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath}/classinfo/classroominfo/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 教室信息
 							</a></li>
-                             <li><a href="view/classinfo/syllabusinfo/syllabusinfo_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath}/classinfo/syllabusinfo/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 课程表
 							</a></li>   
-                            <li><a href="view/classinfo/teacher/teacher_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath }/system/staffteacher/teacherlist.action" target="mainframe">  <i
 									class="icon-double-angle-right"></i> 教师管理
-							</a></li>    
-                            <li><a href="view/classinfo/classinfo/classinfo_list.html" target="mainframe"> <i
+							</a></li>      
+                            <li><a href="${pageContext.request.contextPath}/classinfo/classinfo/listCDSCS.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 班级管理
 							</a></li>                                                           
 						</ul>
 				</li>
-                           <li><a href="javascript:void(0)" target="mainframe"
-						class="dropdown-toggle"> <i class="icon-desktop"></i> <span
-							class="menu-text"> 学员管理 </span> <b class="arrow icon-angle-down"></b>
+				
+				<li>
+					<a href="javascript:void(0)" target="mainframe" class="dropdown-toggle">
+						<i class="icon-desktop"></i> 
+						<span class="menu-text"> 学员管理 </span> 
+						<b class="arrow icon-angle-down"></b>
 					</a>
-
-						<ul class="submenu">
-                            <li><a href="view/student/student/student_list.html" target="mainframe"> <i
-									class="icon-double-angle-right"></i> 学员信息
-							</a></li>
-                            <li><a href="view/student/evaluationinfo/evaluationinfo_list.html" target="mainframe"> <i
-									class="icon-double-angle-right"></i> 学员评价
-							</a></li>
-                            <li><a href="view/student/communicateinfo/communicateinfo_list.html" target="mainframe"> <i
-									class="icon-double-angle-right"></i> 沟通记录
-							</a></li>
-                            <li><a href="view/student/studentwritegrade/studentwritegrade_list.html" target="mainframe"> <i
-									class="icon-double-angle-right"></i> 学员成绩
-							</a></li>                                                                                                                        
-						</ul>
+					
+					<ul class="submenu">
+						<li><a href="${pageContext.request.contextPath}/student/studentinfo/list.action" 
+								target="mainframe">
+							<i class="icon-double-angle-right"></i> 学员信息
+						</a></li>
+						<li><a href="${pageContext.request.contextPath}/student/evaluationinfo/list.action" 
+								target="mainframe">
+							<i class="icon-double-angle-right"></i> 学员评价
+						</a></li>
+						<li><a href="${pageContext.request.contextPath}/student/communicationinfo/list.action"
+								target="mainframe">
+							<i class="icon-double-angle-right"></i> 沟通记录
+						</a></li>
+						<li><a href="${pageContext.request.contextPath}/student/studentwritegrade/list.action" 
+								target="mainframe">
+							<i class="icon-double-angle-right"></i> 学员成绩
+						</a></li>
+					</ul>
 				</li>
                 
                    <li><a href="javascript:void(0)" target="mainframe"
@@ -249,10 +256,10 @@
 					</a>
 
 						<ul class="submenu">
-                            <li><a href="view/student/student/student_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath}/payment/studentpayment/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 学员缴费
 							</a></li>
-                            <li><a href="view/student/evaluationinfo/evaluationinfo_list.html" target="mainframe"> <i
+                            <li><a href="${pageContext.request.contextPath}/payment/staffsalary/list.action" target="mainframe"> <i
 									class="icon-double-angle-right"></i> 员工薪水
 							</a></li>
                                                                                                                                          
