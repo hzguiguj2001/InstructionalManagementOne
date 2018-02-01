@@ -51,6 +51,12 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 		
 		StudentInfoExample studentInfoExample = new StudentInfoExample();
 		Criteria criteria = studentInfoExample.createCriteria();
+		/*
+		 * 查询所有正常的学员的数据
+		 * 1：正常 
+		 * 0：删除
+		 */
+		criteria.andStudentStateEqualTo(1);
 		
 		if(studentInfo!=null) {
 			//id
@@ -68,15 +74,10 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 			if(studentInfo.getStudentTellphone()!=null) {
 				criteria.andStudentTellphoneEqualTo(studentInfo.getStudentTellphone());
 			}
-		}else {
-			return studentInfoMapper.selectByExample(null);
 		}
-		/*
-		 * 查询所有正常的学员的数据
-		 * 1：正常 
-		 * 0：删除
-		 */
-		criteria.andStudentStateEqualTo(1);
+		else {
+			return studentInfoMapper.selectByExample(studentInfoExample);
+		}
 		
 		return studentInfoMapper.selectByExample(studentInfoExample);
 		

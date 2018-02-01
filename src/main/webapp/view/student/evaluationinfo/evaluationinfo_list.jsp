@@ -57,17 +57,20 @@
 		<display:table class="table table-condensed table-striped" name="list" pagesize="10" 
 				requestURI="${pageContext.request.contextPath }/student/evaluationinfo/list.action">
 			<display:column property="evaluationInfo.evaluationId" 
-					title="编号"		></display:column>
+					title="评价编号"		></display:column>
 			<display:column property="studentName" 
 					title="学员姓名"	></display:column>
 			<display:column property="evaluationInfo.evaluationTile" 
-					title="主题"		></display:column>
+					title="评价主题"		></display:column>
 			<display:column property="evaluationInfo.evaluationContent" 
 					title="评价内容"	></display:column>
 			<display:column property="disciplineName" 
 					title="科目名称"		></display:column>
 			<display:column property="staffName" 
-					title="教师姓名"	></display:column>
+					title="负责教师"	></display:column>
+			<display:column property="evaluationInfo.evaluationTime" 
+					format="{0,date,yyyy年MM月dd日}"
+					title="科目名称"		></display:column>
 			<display:column href="${ pageContext.request.contextPath }/student/evaluationinfo/load.action" 
 					paramId="evaluationId" paramProperty="evaluationInfo.evaluationId" value="修改" title="修改"></display:column>
 			<display:column href="${ pageContext.request.contextPath }/student/evaluationinfo/delete.action" 

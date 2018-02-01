@@ -13,7 +13,7 @@ public class EvaluationInfo {
 
     private Integer disciplineId;
 
-    @NotEmpty(message="{student.evaluationTile.isEmpyt}")
+    @NotEmpty(message="{student.evaluation.evaluationTile.isEmpyt}")
     private String evaluationTile;
 
     private String evaluationContent;

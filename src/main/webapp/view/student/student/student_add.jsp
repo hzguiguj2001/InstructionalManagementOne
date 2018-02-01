@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="col-sm-5">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">编号</label>
+					<label class="col-sm-3 control-label">学员编号</label>
 					<div class="col-sm-9">
 						<input type="text" name="studentId"  value="${ studentInfo.studentId }" 
 								class="form-control input-sm" placeholder="编号将会自动生成"
@@ -54,7 +54,7 @@
 			
 			<div class="col-sm-5">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">姓名</label>
+					<label class="col-sm-3 control-label">学员姓名</label>
 					<div class="col-sm-9">
 						<input type="text" name="studentName" value="${ studentInfo.studentName }" 
 								class="form-control input-sm" placeholder="请输入姓名"/>
@@ -68,8 +68,44 @@
 		<div class="row">
 			<div class="col-sm-5">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">性别</label>
-					<div class="col-sm-4">
+					<label class="col-sm-3 control-label">班级名称</label>
+					<div class="col-sm-9">
+						<select class="form-control input-sm" name="classId" >
+							<option>请选择班级</option>
+							<c:forEach items="${classInfoList}" var="classInfo">
+								<option value="${classInfo.classId}"
+										${classInfo.classId==studentInfo.classId?'selected':''}>
+									${classInfo.className}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-5">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">负责教师</label>
+					<div class="col-sm-9">
+						<select class="form-control input-sm" name="staffId" >
+							<option>请选择负责教师</option>
+							<c:forEach items="${staffInfoList}" var="staffInfo">
+								<option value="${staffInfo.staffId}"
+										${staffInfo.staffId==studentInfo.staffId?'selected':''}>
+									${staffInfo.staffName}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end   基本信息  row 2 -->
+		
+		<!-- begin 基本信息  row 3 -->
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">学员性别</label>
+					<div class="col-sm-9">
 						<select name="studentSex" class="form-control input-sm" >
 							<option>保密</option>
 							<option ${studentInfo.studentSex=='男'?'selected':''}>男</option>
@@ -78,20 +114,48 @@
 					</div>
 				</div>
 			</div>
-		
+			
 			<div class="col-sm-5">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">年龄</label>
-					<div class="col-sm-5">
+					<label class="col-sm-3 control-label">身份证号</label>
+					<div class="col-sm-9">
+						<input type="text" name="studentIdcard" value="${ studentInfo.studentIdcard }" 
+								class="form-control input-sm" placeholder="请输入身份证"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end   基本信息  row 3 -->
+		
+	    <!-- begin 基本信息  row 4 -->
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">出生日期</label>
+					<div class="col-sm-9">
+						<input type="text" name="studentBirthday" onclick="WdatePicker()" 
+								value="<fmt:formatDate value="${studentInfo.studentBirthday}" 
+										type="both" pattern="yyyy-MM-dd"/>" 
+								class="form-control input-sm" placeholder="请输入出生日期" 
+								readonly="readonly"/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-5">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">学员年龄</label>
+					<div class="col-sm-9">
 						<input type="text" name="studentAge" value="${ studentInfo.studentAge }" 
 								class="form-control input-sm" placeholder="请输入年龄"/>
 					</div>
 				</div>
 			</div>
+			
 		</div>
-		<!-- end   基本信息  row 2 -->
-		
-		<!-- begin 基本信息  row 3 -->
+		<!-- end   基本信息  row 4 -->
+	
+	    <!-- begin 基本信息  row 5 -->
 		<div class="row">
 			<div class="col-sm-5">
 				<div class="form-group">
@@ -112,57 +176,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- end   基本信息  row 3 -->
-		
-	    <!-- begin 基本信息  row 4 -->
-		<div class="row">
-			<div class="col-sm-5">
-				<div class="form-group">
-					<label class="col-sm-3 control-label">身份证</label>
-					<div class="col-sm-9">
-						<input type="text" name="studentIdcard" value="${ studentInfo.studentIdcard }" 
-								class="form-control input-sm" placeholder="请输入身份证"/>
-					</div>
-				</div>
-			</div>
-		
-			<div class="col-sm-5">
-				<div class="form-group">
-					<label class="col-sm-3 control-label">家庭地址</label>
-					<div class="col-sm-9">
-						<input type="text" name="studentAddress" value="${ studentInfo.studentAddress }" 
-								class="form-control input-sm" placeholder="请输入家庭地址"/>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end   基本信息  row 4 -->
-	
-	    <!-- begin 基本信息  row 5 -->
-		<div class="row">
-			<div class="col-sm-5">
-				<div class="form-group">
-					<label class="col-sm-3 control-label">出生日期</label>
-					<div class="col-sm-9">
-						<input type="text" name="studentBirthday" onclick="WdatePicker()" 
-								value="<fmt:formatDate value="${studentInfo.studentBirthday}" 
-										type="both" pattern="yyyy-MM-dd"/>" 
-								class="form-control input-sm" placeholder="请输入出生日期" 
-								readonly="readonly"/>
-					</div>
-				</div>
-			</div>
 			
-			<div class="col-sm-5">
-				<div class="form-group">
-					<label class="col-sm-3 control-label">所在院校</label>
-					<div class="col-sm-9">
-						<input type="text" name="studentSchool" value="${ studentInfo.studentSchool }" 
-								class="form-control input-sm" placeholder="请输入所在院校"/>
-					</div>
-				</div>
-			</div>
 		</div>
 		<!-- end   基本信息  row 5 -->
 	
@@ -177,13 +191,13 @@
 					</div>
 				</div>
 			</div>
-		
+			
 			<div class="col-sm-5">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">家长姓名</label>
+					<label class="col-sm-3 control-label">所在院校</label>
 					<div class="col-sm-9">
-						<input type="text" name="studentParentsName" value="${ studentInfo.studentParentsName }" 
-								class="form-control input-sm" placeholder="请输入家长姓名"/>
+						<input type="text" name="studentSchool" value="${ studentInfo.studentSchool }" 
+								class="form-control input-sm" placeholder="请输入所在院校"/>
 					</div>
 				</div>
 			</div>
@@ -194,14 +208,40 @@
 		<div class="row">
 			<div class="col-sm-5">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">省份</label>
+					<label class="col-sm-3 control-label">居住省份</label>
 					<div class="col-sm-9">
 						<input type="text" name="studentPro" value="${ studentInfo.studentPro }" 
 								class="form-control input-sm" placeholder="请输入省份"/>
 					</div>
 				</div>
 			</div>
-		
+			
+			<div class="col-sm-5">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">居住城市</label>
+					<div class="col-sm-9">
+						<input type="text" name="studentProCity" value="${ studentInfo.studentProCity }" 
+								class="form-control input-sm" placeholder="请输入城市"/>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		<!-- end   基本信息  row 7 -->
+	
+		<!-- begin 基本信息  row 8 -->
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">家长姓名</label>
+					<div class="col-sm-9">
+						<input type="text" name="studentParentsName" value="${ studentInfo.studentParentsName }" 
+								class="form-control input-sm" placeholder="请输入家长姓名"/>
+					</div>
+				</div>
+			</div>
+			
 			<div class="col-sm-5">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">家长电话</label>
@@ -212,16 +252,16 @@
 				</div>
 			</div>
 		</div>
-		<!-- end   基本信息  row 7 -->
-	
-		<!-- begin 基本信息  row 8 -->
+		<!-- end   基本信息  row 8 -->
+		
+		<!-- begin 基本信息  row 9 -->
 		<div class="row">
 			<div class="col-sm-5">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">城市</label>
+					<label class="col-sm-3 control-label">家庭地址</label>
 					<div class="col-sm-9">
-						<input type="text" name="studentProCity" value="${ studentInfo.studentProCity }" 
-								class="form-control input-sm" placeholder="请输入城市"/>
+						<input type="text" name="studentAddress" value="${ studentInfo.studentAddress }" 
+								class="form-control input-sm" placeholder="请输入家庭地址"/>
 					</div>
 				</div>
 			</div>
@@ -229,7 +269,7 @@
 			<div class="col-sm-5">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">意向状态</label>
-					<div class="col-sm-6">
+					<div class="col-sm-9">
 						<select name="studentType" class="form-control input-sm">
 							<option ${studentInfo.studentType=='无意向'?'selected':''}>无意向</option>
 							<option ${studentInfo.studentType=='意向低'?'selected':''}>意向低</option>
@@ -240,8 +280,8 @@
 				</div>
 			</div>
 		</div>
-		<!-- end   基本信息  row 8 -->
-	
+		<!-- end   基本信息  row 9 -->
+		
 		<!-- 描述信息 -->
 		<h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">描述信息</h5>
 		<!-- begin 描述信息  row 1 -->

@@ -95,4 +95,15 @@ public class MarketActiveController {
 		return this.list(null, model);
 	}
 	
+	@RequestMapping("update.action")
+	public String uodateMarketActive(MarketActive marketActive,Model model) {
+		boolean result=marketActiveService.updateMarketActive(marketActive);
+		 if(result) {
+	            model.addAttribute("info", "修改成功");
+	        }else {
+	            model.addAttribute("info", "修改失败");
+	        }
+	        return this.list(null, model);
+	}
+	
 }

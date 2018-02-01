@@ -3,6 +3,8 @@ package com.guigu.instructional.payment.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,28 @@ public class StaffSalaryController {
 	@Resource(name="staffInfoServiceImpl")
 	private StaffInfoService staffInfoService;
 	
+//	@RequestMapping("list.action")
+//    public String list(StaffSalaryCustom staffSalaryCustom,Model model) throws Exception {
+//        List<StaffSalaryCustom> list =staffSalaryService.findStaffSalaryList(staffSalaryCustom);
+//        model.addAttribute("list", list);
+//        
+//        return "payment/staffsalary/staffsalary_list";
+//    }
 	
+	
+	@RequestMapping("excel.action")
+	public void export(HttpServletResponse response) throws Exception {
+		StaffSalary staffSalary=new StaffSalary();
+		List<StaffSalary> list =staffSalaryService.getStaffSalary(staffSalary);
+		
+		
+		
+		ExportExcel<StaffSalary> ee= new ExportExcel<StaffSalary>();
+		String[] headers = { "SalaryId", "StaffId", "StastaffId", "SalaryTotal" , "SalaryDeduct", "SalaryReal", "SalaryIsused", "Time", "Remark"};
+		String fileName = "SalaryTable";
+		ee.exportExcel(headers,list,fileName,response);
+	}
+
 	 @RequestMapping("add.action")
 	    public String addStaffSalary(@Validated StaffSalary staffSalary,BindingResult bindingResult,Model model) throws Exception {
 	       

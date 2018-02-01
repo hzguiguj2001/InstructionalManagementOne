@@ -32,10 +32,10 @@
 		
 <form action="${pageContext.request.contextPath}/payment/studentpayment/add.action" class="form-horizontal">
    	<div class="row">
-    	<div class="col-sm-3 col-sm-offset-4">
+    	<div class="col-sm-4 col-sm-offset-4">
         	<input  type="submit" class="btn btn-success" value="保存"/>
             <input  type="reset" class="btn  btn-danger" value="取消"/>
-            <a href="${pageContext.request.contextPath }/payment/studentpayment/list.action" class="btn btn-success">返回上一级</a>
+            <a href="${pageContext.request.contextPath }/payment/studentpayment/list.action" class="btn btn-success">返回</a>
         </div>
     </div>
     <h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">基本信息</h5>
@@ -102,9 +102,9 @@
 					<label class="col-sm-3 control-label">缴费方式</label>
 					<div class="col-sm-4">
 						<select class="form-control input-sm" name="paymentMenthod">
-							<option value="1">现金</option>
-							<option value="2">网银</option>
-							<option value="3">支付宝</option>
+							<option value="1">Cash</option>
+							<option value="2">Online Banking</option>
+							<option value="3">Alipay</option>
 						</select>
 					</div>
 				</div>

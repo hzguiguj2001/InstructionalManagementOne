@@ -22,6 +22,17 @@
 <form action="${pageContext.request.contextPath}/marketactive/emailinfo/look.action" class="form-horizontal">
 
     <h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">基本信息</h5>
+    <div class="row">
+                <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">主题</label>
+                <div class="col-sm-9">
+                	<p class="form-control-static">${emailInfo.emailTitle}</p>
+                </div>
+            </div>
+        </div>
+        
+        </div>
 	<div class="row">
     	<div class="col-sm-5">
         	<div class="form-group">
@@ -67,20 +78,6 @@
 
     </div>
     
-      	<div class="row">
-                <div class="col-sm-5">
-            <div class="form-group">
-            	<label class="col-sm-3 control-label">主题</label>
-                <div class="col-sm-9">
-                	<p class="form-control-static">${emailInfo.emailTitle}</p>
-                </div>
-            </div>
-        </div>
-        
-        </div>
-    
-
-
 
     </div>
     <h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">邮件内容</h5>

@@ -14,8 +14,8 @@ public class StudentWriteGrade {
 
     private Integer disciplineId;
 
-    @Max(value=100,message="{student.StudentWriteGrade.writeGrade.MoreThanHundred}")
-    @Min(value=0,  message="{student.StudentWriteGrade.writeGrade.lessThanZero}")
+    @Min(value=0,  message="{student.studentWriteGrade.writeGrade.lessThanZero}")
+    @Max(value=100,message="{student.studentWriteGrade.writeGrade.moreThanHundred}")
     private String writeGrade;
 
     private Date writeGradeTime;

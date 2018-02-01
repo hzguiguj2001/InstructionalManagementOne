@@ -59,11 +59,11 @@
 	    <display:table class="table table-condensed table-striped" name="list" pagesize="10" 
 	    		requestURI="${pageContext.request.contextPath }/student/communicationinfo/list.action">
 	    	<display:column property="communicationInfo.communicationId" 
-	    			title="编号"		></display:column>
+	    			title="沟通编号"		></display:column>
 	    	<display:column property="studentName"
 	    			title="学员姓名"	></display:column>
 	    	<display:column property="staffName"
-	    			title="负责人"	></display:column>
+	    			title="负责教师"	></display:column>
 	    	<display:column property="communicationInfo.communicationTime" 
 	    			format="{0,date,yyyy年MM月dd日}"
 					title="沟通时间"	></display:column>

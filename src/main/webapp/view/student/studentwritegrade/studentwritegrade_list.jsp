@@ -57,20 +57,20 @@
 		<display:table class="table table-condensed table-striped" name="list" pagesize="10" 
 				requestURI="${pageContext.request.contextPath }/student/studentWriteGrade/list.action">
 			<display:column property="studentWriteGrade.writeGradeId" 
-					title="编号"></display:column>
+					title="成绩编号"></display:column>
 			<display:column property="studentName" 
 					title="学员姓名"></display:column>
 			<display:column property="staffName" 
-					title="负责人"></display:column>
+					title="负责教师"></display:column>
 			<display:column property="disciplineName" 
 					title="科目名称"></display:column>
 			<display:column property="studentWriteGrade.writeGrade" 
-					title="成绩"></display:column>
+					title="考试成绩"></display:column>
 			<display:column property="studentWriteGrade.writeGradeTime" 
 					format="{0,date,yyyy年MM月dd日}"
-					title="时间"></display:column>
+					title="考试时间"></display:column>
 			<display:column property="studentWriteGrade.writeGradeNote" 
-					title="备注"></display:column>
+					title="考试备注"></display:column>
 			<display:column href="${ pageContext.request.contextPath }/student/studentwritegrade/load.action" 
 					paramId="writeGradeId" paramProperty="studentWriteGrade.writeGradeId" value="修改" title="修改"></display:column>
 			<display:column href="${ pageContext.request.contextPath }/student/studentwritegrade/delete.action" 

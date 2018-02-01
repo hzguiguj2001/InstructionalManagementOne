@@ -3,6 +3,7 @@ package com.guigu.instructional.po;
 import java.util.Date;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import com.guigu.instructional.common.util.Telephone;
@@ -15,18 +16,19 @@ public class StudentInfo {
 
     private Integer classId;
     
-    @NotEmpty(message="{student.studentName.isEmpty}")
+    @NotEmpty(message="{student.student.studentName.isEmpty}")
     private String studentName;
 
     private String studentSex;
 
-    @Min(value=0,message="{student.studentAge.lessThanZero}")
+    @Min(value=0,  message="{student.student.studentAge.least}")
+    @Max(value=200,message="{student.student.studentAge.most}")
     private Integer studentAge;
 
-    @Telephone(message="{student.studentAge.wrongTelephone}")
+    @Telephone(message="{student.student.studentTellphone.wrongTelephone}")
     private String studentTellphone;
 
-    @Email
+    @Email(message="{student.student.studentEmail.wrongEmail}")
     private String studentEmail;
 
     private String studentIdcard;

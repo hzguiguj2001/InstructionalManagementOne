@@ -41,7 +41,7 @@
 			
 			<input type="submit" class="btn btn-danger"  value="查询"/>
 			<input type="button" class="btn btn-success" value="添加学员信息" 
-					onClick="javascript:window.location='${pageContext.request.contextPath}/view/student/student/student_add.jsp'"/>
+					onClick="javascript:window.location='${pageContext.request.contextPath}/student/studentinfo/addload.action'"/>
 		</form>
 	</div>
 	
@@ -58,14 +58,22 @@
 		<table class="table table-condensed table-striped"></table>
 	    <display:table class="table table-condensed table-striped" name="list" pagesize="10" 
 	    		requestURI="${pageContext.request.contextPath }/student/studentinfo/list.action">
-	    	<display:column property="studentId" title="编号"></display:column>
-	    	<display:column property="studentName" title="姓名" href="${pageContext.request.contextPath }/student/studentinfo/show.action" 
-	    			paramId="studentId" paramProperty="studentId"></display:column>
-	    	<display:column property="studentSex" title="性别"></display:column>
-	    	<display:column property="studentAge" title="年龄"></display:column>
-	    	<display:column property="studentTellphone" title="手机号码"></display:column>
-	    	<display:column property="studentEmail" title="电子邮件"></display:column>
-	    	<display:column property="studentSchool" title="所在院校"></display:column>
+	    	<display:column property="studentId" 
+	    			title="学员编号"></display:column>
+	    	<display:column property="studentName" 
+	    			href="${pageContext.request.contextPath }/student/studentinfo/show.action" 
+	    			paramId="studentId" paramProperty="studentId" 
+	    			title="学员姓名"></display:column>
+	    	<display:column property="studentSex" 
+	    			title="学员性别"></display:column>
+	    	<display:column property="studentAge" 
+	    			title="学员年龄"></display:column>
+	    	<display:column property="studentTellphone" 
+	    			title="手机号码"></display:column>
+	    	<display:column property="studentEmail" 
+	    			title="电子邮件"></display:column>
+	    	<display:column property="studentSchool" 
+	    			title="所在院校"></display:column>
 	    	<display:column href="${ pageContext.request.contextPath }/student/studentinfo/load.action" 
 	    			paramId="studentId" paramProperty="studentId" value="修改" title="修改"></display:column>
 	    	<display:column href="${ pageContext.request.contextPath }/student/studentinfo/delete.action" 

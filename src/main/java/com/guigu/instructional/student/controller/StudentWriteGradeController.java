@@ -104,7 +104,7 @@ public class StudentWriteGradeController {
 			List<DisciplineInfo> listOfDisciplineInfo = disciplineInfoService.getDisciplineInfoList(null);
 			model.addAttribute("disciplineInfoList", listOfDisciplineInfo);
 			
-			return "student/studentwritegrade/studentwritegrade_add";
+			return "student/studentwritegrade/studentwritegrade_update";
 		}
     	boolean result=studentWriteGradeService.updateStudentWriteGrade(studentWriteGrade);
 		if(result) {
